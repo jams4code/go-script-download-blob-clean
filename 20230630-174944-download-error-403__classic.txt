@@ -1,0 +1,42 @@
+-> github.com/Azure/azure-storage-blob-go/azblob.newStorageError, C:/Users/abdelk0j/go/pkg/mod/github.com/!azure/azure-storage-blob-go@v0.15.0/azblob/zc_storage_error.go:42
+===== RESPONSE ERROR (ServiceCode=AuthenticationFailed) =====
+Description=Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.
+RequestId:20ee8193-401e-00c3-4e6a-ab2066000000
+Time:2023-06-30T15:49:44.7711871Z, Details: 
+   AuthenticationErrorDetail: The MAC signature found in the HTTP request 'HvOnkM0zQrkgf+TRJuBdIDBwEZFqPGdmStkk1f1WZS8=' is not the same as any computed signature. Server used following string to sign: 'GET
+
+
+
+
+
+
+
+
+
+
+bytes=0-8388607
+x-ms-client-request-id:837160d9-0aaa-4860-4bda-ae70a239c56d
+x-ms-date:Fri, 30 Jun 2023 15:49:44 GMT
+x-ms-range:bytes=0-1048575
+x-ms-version:2020-10-02
+/deviceimage43nttpu64zuve/images/develop-20230606.1-iotedge.packer
+timeout:61'.
+   Code: AuthenticationFailed
+   GET https://deviceimage43nttpu64zuve.blob.iotlab.connect.bobst.com/images/develop-20230606.1-iotedge.packer?timeout=61
+   Authorization: REDACTED
+   User-Agent: [Azure-Storage/0.15 (go1.20.5; Windows_NT)]
+   X-Ms-Client-Request-Id: [837160d9-0aaa-4860-4bda-ae70a239c56d]
+   X-Ms-Date: [Fri, 30 Jun 2023 15:49:44 GMT]
+   X-Ms-Range: [bytes=0-1048575]
+   X-Ms-Version: [2020-10-02]
+   --------------------------------------------------------------------------------
+   RESPONSE Status: 403 Forbidden
+   Content-Length: [808]
+   Content-Type: [application/xml]
+   Date: [Fri, 30 Jun 2023 15:49:44 GMT]
+   X-Azure-Ref: [20230630T154944Z-kufcdsprbd2vmby5yptdt37g1n00000000hg00000000fwyn]
+   X-Cache: [TCP_MISS]
+   X-Ms-Error-Code: [AuthenticationFailed]
+   X-Ms-Request-Id: [20ee8193-401e-00c3-4e6a-ab2066000000]
+
+
