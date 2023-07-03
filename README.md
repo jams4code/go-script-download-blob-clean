@@ -8,7 +8,7 @@ It works by executing 10 downloads of a blob using specific hardcoded variables.
 
 The project includes the following files:
 
-- `azure.go`: Contains the functionality for creating a pipeline and downloading a blob from Azure storage. This files was extracted from EVE-OS, which is the vendor we use for the remote management of our edge devices. There is the EVE-Layer that runs and download the blobs corresponding to the VM which is the actual runtime for our edge devices.
+- `azure.go`: Contains the functionality for creating a pipeline and downloading a blob from Azure storage. This files was extracted from EVE-OS, which is the vendor we use for the remote management of our edge devices. There is the EVE-Layer that runs and download the blobs corresponding to the VM which is the actual runtime for our edge devices. [Source code can be found here.(https://github.dev/lf-edge/eve/blob/master/libs/zedUpload/azureutil/azure.go)]
 - `log.go`: Handles logging to files. Was just made to create a file for each download and make it easy to check the failure reason and how many success against, how many failures.
 - `main.go`: The main entry point for the program.
 - `go.mod` and `go.sum`: Go module and checksum files respectively, handling the project's dependencies.
