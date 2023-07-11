@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/lf-edge/eve/libs/zedUpload/types"
 )
@@ -50,8 +51,15 @@ func main() {
 	// Create the local file path
 	localFile := filepath.Join(cwd, remoteFile)
 
+
+	// counters
+	var totalRequest int = 1000
+	var successCounter int = 0
+	var errorCounter int = 0
+	var error403Counter int = 0
+
 	// The for loop that will make the download attempt 10 times
-	for i := 0; i < 10; i++ {
+	for i := 0; i < totalRequest; i++ {
 		fmt.Println("Attempt number: ", i+1)
 		fmt.Println("Downloading Blob...")
 
@@ -61,11 +69,21 @@ func main() {
 			if strings.Contains(err.Error(), "RESPONSE Status: 403 Forbidden") {
 				fmt.Println("Error downloading blob: 403")
 				// Log to file to check when it works and when it fails
-				LogToFile("error-403__"+cdnType, err.Error())
+				// create a filename "error-403_"+ i +"_"+cdnType i being the iteration number
+				filename := "error-403__" + cdnType
+
+				LogToFile(filename, err.Error())
+
+				error403Counter++
 			} else {
 				fmt.Println("---->Error downloading blob<----")
 				LogToFile("error-"+cdnType, err.Error())
+
+				errorCounter++
 			}
+
+			// wait 5 seconds before trying again
+			time.Sleep(5 * time.Second)
 
 			// If there is an error, we log it and go to the next iteration
 			continue
@@ -74,6 +92,20 @@ func main() {
 		// Create a file just to know that the run was successful "<timestamp>-download-success.txt"
 		LogToFile("success"+cdnType, "Blob downloaded successfully")
 
+		successCounter++
+
 		fmt.Println("Blob downloaded successfully")
 	}
+
+	// print a separator
+	fmt.Println("--------------------------------------------------")
+
+	// Display the counters
+	fmt.Println("Total requests: ", totalRequest)
+	fmt.Println("Success: ", successCounter)
+	fmt.Println("Error: ", errorCounter)
+	fmt.Println("Error 403: ", error403Counter)
+
+	// print a separator
+	fmt.Println("--------------------------------------------------")
 }
